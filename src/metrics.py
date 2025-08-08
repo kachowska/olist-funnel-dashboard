@@ -7,8 +7,17 @@ def load():
     return pd.read_parquet(INP)
 
 def funnel_counts(df):
-    order_stage = df.groupby('status_stage').size().reindex(['created','approved','delivered_carrier','delivered_customer']).fillna(0).astype(int)
-    return order_stage.to_dict()
+    s0 = df['order_purchase_timestamp'].notna()
+    s1 = s0 & df['order_approved_at'].notna()
+    s2 = s1 & df['order_delivered_carrier_date'].notna()
+    s3 = s2 & df['order_delivered_customer_date'].notna()
+    return {
+        'created': int(s0.sum()),
+        'approved': int(s1.sum()),
+        'delivered_carrier': int(s2.sum()),
+        'delivered_customer': int(s3.sum()),
+    }
+
 
 def funnel_cr(funnel_dict):
     stages = ['created','approved','delivered_carrier','delivered_customer']
