@@ -1,6 +1,10 @@
 # E-commerce Sales Funnel Dashboard
 
-Live demo (GitHub Pages): https://kachowska.github.io/olist-funnel-dashboard/
+## Live
+
+- Dashboard: https://kachowska.github.io/olist-funnel-dashboard/
+- A/B test report: https://kachowska.github.io/olist-funnel-dashboard/abtest.html
+
 
 This project analyzes the Olist Brazilian e-commerce dataset and produces a reproducible sales-funnel dashboard. It demonstrates an end-to-end workflow: ETL → feature engineering → business metrics → static Plotly HTML dashboard, plus a mock A/B test write-up.
 
